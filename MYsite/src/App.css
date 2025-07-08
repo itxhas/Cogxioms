@@ -1,0 +1,11 @@
+:root {
+ 
+    --primary: #083451;
+    --secondary:#4681a8;
+}
+
+body {
+  font-family: var(--bs-font-sans-serif);
+  background: var(--bs-light);
+  color: var(--bs-dark);
+}

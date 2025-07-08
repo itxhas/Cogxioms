@@ -1,0 +1,15 @@
+.about {
+  padding: var(--section-padding);
+  background-color: var(--background-color);
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
