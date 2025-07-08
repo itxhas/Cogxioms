@@ -1,6 +1,6 @@
 :root {
  
-    --primary: #083451;
+    --primary:#0f172a;
     --secondary:#4681a8;
 }
 
@@ -8,4 +8,6 @@ body {
   font-family: var(--bs-font-sans-serif);
   background: var(--bs-light);
   color: var(--bs-dark);
+  margin: 0%;
+  padding: 0%;
 }
