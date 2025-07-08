@@ -9,7 +9,7 @@ const services = [
 			'Tailored solutions from mobile apps to enterprise platforms designed to meet your business goals.',
 		icon: '💻',
 		items: [
-			'Mobile App Development (iOS & Android)',
+			'Mobile App Development iOS & Android',
 			'Web Application Development',
 			'Enterprise Software Solutions',
 			'UI/UX Design',
