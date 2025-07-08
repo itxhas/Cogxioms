@@ -6,7 +6,7 @@ const services = [
   {
     title: 'Custom Software Development',
     description: 'Tailored solutions from mobile apps to enterprise platforms designed to meet your business goals.',
-    icon: '💻',
+    image: '/Images/custom.svg',
     items: [
       'Mobile App Development iOS & Android',
       'Web Application Development',
@@ -18,7 +18,7 @@ const services = [
   {
     title: 'Artificial Intelligence',
     description: 'Leverage AI to drive smarter decisions and automate processes.',
-    icon: '🧠',
+    image: '/Images/ArtificialIntelligence.svg',
     items: [
       'Custom AI Model Development',
       'Predictive Analytics',
@@ -29,7 +29,7 @@ const services = [
   {
     title: 'Machine Learning',
     description: 'Model training and deployment for intelligent automation.',
-    icon: '🤖',
+    image: '/Images/predictiveAnalysis.svg',
     items: [
       'Model Training & Deployment',
       'Intelligent Automation',
@@ -40,7 +40,7 @@ const services = [
   {
     title: 'Data Visualization',
     description: 'Transform your data into actionable insights with beautiful visualizations.',
-    icon: '📊',
+    image: '/Images/Visualization.svg',
     items: [
       'Interactive Dashboards',
       'Business Intelligence (BI) Solutions',
@@ -50,7 +50,7 @@ const services = [
   {
     title: 'Data Scraping & Automation',
     description: 'Automate data collection and processing workflows.',
-    icon: '🔄',
+    image: '/Images/Dataextraction.svg',
     items: [
       'Web & Social Media Data Extraction',
       'Automated Data Collection Pipelines',
@@ -61,7 +61,7 @@ const services = [
   {
     title: 'API Integration',
     description: 'Seamlessly connect your systems with third-party services and internal APIs.',
-    icon: '🔌',
+    image: '/Images/apiIntegeration.svg',
     items: [
       'REST API Development & Integration',
       'GraphQL API Implementation',
