@@ -65,18 +65,18 @@ const Footer = () => {
                 <li>
                   <a href="https://www.cognions.com/" target="_blank" rel="noopener noreferrer">
                     <FiGlobe className="contact-icon" />
-                    https://www.cognions.com/
+                    https://www.cogxioms.com/
                   </a>
                 </li>
                 <li>
                   <a href="mailto:info@cognions.com">
                     <FiMail className="contact-icon" />
-                    info@cognions.com
+                    info@cogxioms.com
                   </a>
                 </li>
                 <li>
                   <FiMapPin className="contact-icon" />
-                  Cognions HQ
+                  Sabzazar Block C 
                 </li>
               </ul>
             </motion.div>
@@ -93,7 +93,7 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            © 2025 Cognions. All rights reserved.
+            © 2025 Cogxioms. All rights reserved.
           </motion.p>
         </div>
       </div>

@@ -1,25 +1,113 @@
-.projects {
-  padding: var(--section-padding);
-  background-color: #f8fafc;
+/* Projects.css */
+.projects-section {
+  padding: 4rem 2rem;
+  background-color:white;
 }
 
-.subtitle {
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-header {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  font-size: 1.1rem;
-  color: var(--text-color);
-  opacity: 0.8;
+  margin-bottom: 3rem;
 }
 
-.grid {
+.projects-header img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+}
+
+.projects-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.projects-subtitle {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
 }
 
+.project-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  padding: 2rem;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.tech-stack-container {
+  margin: 1.5rem 0;
+}
+
+.tech-item {
+  padding: 0.5rem 0;
+  color: #34495e;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.tech-item:last-child {
+  border-bottom: none;
+}
+
+.view-project-button {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.view-project-button:hover {
+  background-color: #2980b9;
+}
+
 @media (max-width: 768px) {
-  .grid {
+  .projects-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .projects-title {
+    font-size: 2rem;
   }
 }

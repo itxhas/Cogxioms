@@ -17,54 +17,6 @@
   font-weight: 800;
   color: var(--primary-color);
   margin-bottom: 1rem;
-}
-
-.subtitle {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin-bottom: 3rem;
-  color: var(--text-color);
-  opacity: 0.85;
-  line-height: 1.6;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 2rem;
-  width: 100%;
-}
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-}
-.services {
-  padding: 4rem 2rem;
-  background-color: var(--background-color);
-}
-
-.services .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
@@ -83,7 +35,50 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   width: 100%;
-  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+/* Card styles */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Icon styles */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(87, 98, 116, 0.08);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.card ul {
+  margin: 1rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card li {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 0.3rem;
 }
 
 /* Optional: Card hover or elevation effect */
@@ -105,7 +100,11 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .card {
+    padding: 1.5rem 1rem;
   }
 
   .section-title {

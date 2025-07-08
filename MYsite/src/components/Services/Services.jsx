@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import ServiceCard from './ServiceCard/ServiceCard';
 import './Services.css';
 
 const services = [
@@ -27,14 +26,14 @@ const services = [
     ],
   },
   {
-    title: 'Machine Learning',
-    description: 'Model training and deployment for intelligent automation.',
+    title: 'Predictive Analysis',
+    description: 'A system that uses machine learning to forecast trends and automate insights.',
     image: '/Images/predictiveAnalysis.svg',
     items: [
-      'Model Training & Deployment',
-      'Intelligent Automation',
-      'Recommendation Systems',
-      'Data Classification & Clustering',
+    'TensorFlow / Scikit-learn – Model training',
+    'Python – Data processing',
+    'Flask – API deployment',
+    'Pandas – Feature engineering',
     ],
   },
   {
@@ -99,7 +98,18 @@ const Services = () => {
 
         <div className="grid">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <div className="card" key={index}>
+              <div className="icon">
+                <img src={service.image} alt={service.title + ' icon'} style={{ width: 80, height: 80 }} />
+              </div>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <ul>
+                {service.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>

@@ -1,72 +1,74 @@
-import { motion } from 'framer-motion';
-import TeamMember from './TeamMember/TeamMember';
+// Team.jsx
+import { useState } from 'react';
 import './Team.css';
 
 const teamMembers = [
-  { 
-    name: 'Syed Rawan Shah', 
-    role: 'CEO & Founder',
-    bio: 'Visionary leader with 10+ years in tech entrepreneurship'
+  {
+    id: 1,
+    name: 'Muhammad Haseeb',
+    role: 'Full-stack Web Developer',
+    image: '/Images/MianMuhammad.png',
+    bio: 'Experienced in React, Node.js, and modern web development practices.'
   },
-  { 
-    name: 'M. Furgan', 
-    role: 'CTO',
-    bio: 'Expert in scalable architecture and system design'
+  {
+    id: 2,
+    name: 'Hassan Ali ',
+    role: 'UI/UX Designer',
+    image: '/Images/MianMuhammad.png',
+    bio: 'Specializes in creating intuitive user interfaces and engaging experiences.'
   },
-  { 
-    name: 'M. Haseeb', 
-    role: 'Lead Developer',
-    bio: 'Full-stack developer specializing in React and Node.js'
-  },
-  { 
-    name: 'Hassan Ali', 
-    role: 'AI Engineer',
-    bio: 'Machine learning specialist with NLP expertise'
-  },
-  { 
-    name: 'M. Mubasher', 
-    role: 'Frontend Developer',
-    bio: 'UI/UX expert creating beautiful, responsive interfaces'
-  },
-  { 
-    name: 'Ayesha Khan', 
-    role: 'Data Scientist',
-    bio: 'Data visualization and analytics professional'
+  {
+    id: 3,
+    name: 'Mian Mubasher',
+    role: 'Backend Engineer',
+    image: '/Images/MianMuhammad.png',
+    bio: 'Expert in database architecture and server-side development.'
   }
 ];
 
 const Team = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const getVisibleMembers = () => {
+    // Get current, next, and previous members
+    const prev = teamMembers[(currentIndex + teamMembers.length - 1) % teamMembers.length];
+    const current = teamMembers[currentIndex];
+    const next = teamMembers[(currentIndex + 1) % teamMembers.length];
+    
+    return [
+      { ...prev, key: 'prev-prev' }, // Left-most duplicate
+      { ...prev, key: 'prev' },      // Left card
+      { ...current, key: 'current' }, // Center card
+      { ...next, key: 'next' },      // Right card
+      { ...next, key: 'next-next' }   // Right-most duplicate
+    ];
+  };
+
+  const handleClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % teamMembers.length);
+  };
+
   return (
-    <section id="team" className="team">
-      <div className="container">
-        <motion.h2 
-          className="section-title"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          Our Team
-        </motion.h2>
+    <section className="team-section">
+      <div className="team-container">
+        <div className="team-header">
+          <h2 className="team-title">Our Team</h2>
+          <p className="team-subtitle">Meet the talented individuals behind our success</p>
+        </div>
 
-        <motion.p
-          className="subtitle"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          Meet the passionate experts building intelligent solutions.
-        </motion.p>
-
-        <div className="grid">
-          {teamMembers.map((member, index) => (
-            <TeamMember 
-              key={member.name}
-              member={member}
-              index={index}
-              span={index === 0 || index === teamMembers.length - 1 ? 2 : 1}
-            />
+        <div className="team-display" onClick={handleClick}>
+          {getVisibleMembers().map((member) => (
+            <div key={`${member.id}-${member.key}`} className={`team-member ${member.key.includes('current') ? 'current' : ''}`}>
+              <div className="member-image-container">
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  className="member-image"
+                />
+              </div>
+              <h3 className="member-name">{member.name}</h3>
+              <p className="member-role">{member.name === 'Zohaib Murtaza' ? 'Full-stack Web Developer' : member.role}</p>
+            </div>
           ))}
         </div>
       </div>

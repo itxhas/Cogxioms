@@ -67,7 +67,7 @@
 }
 
 .social-links a:hover {
-  background: #3b82f6;
+  background: #576274;
   transform: translateY(-3px);
 }
 
@@ -87,7 +87,7 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background: #3b82f6;
+  background: #405e8f;
   border-radius: 3px;
 }
 
@@ -99,6 +99,7 @@
   flex-direction: column;
   gap: 0.8rem;
 }
+
 
 .footer-links li a {
   color: #94a3b8;
@@ -127,22 +128,29 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  
 }
 
 .contact-icon {
   color:white;
   flex-shrink: 0;
+  margin-right: 2rem;
+  margin-top:1rem ;
+  background-color: #576274;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
 }
 
 .contact-info a {
   color: #94a3b8;
   text-decoration: none;
   transition: all 0.3s ease;
+
 }
 
 .contact-info a:hover {
   color: #ffffff;
-  text-decoration: underline;
 }
 
 /* Copyright Section */
