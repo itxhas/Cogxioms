@@ -8,6 +8,10 @@ const Hero = () => {
   const lottieContainer = useRef(null);
 
   useEffect(() => {
+    // Clean up any previous animation instance
+    if (lottieContainer.current) {
+      lottie.destroy();
+    }
     lottie.loadAnimation({
       container: lottieContainer.current,
       renderer: 'svg',
@@ -15,6 +19,7 @@ const Hero = () => {
       autoplay: true,
       path: '/animations/hero.json',
     });
+    return () => lottie.destroy();
   }, []);
 
   return (
