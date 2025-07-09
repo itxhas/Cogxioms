@@ -1,27 +1,36 @@
-// src/pages/About.jsx
 import { motion } from 'framer-motion';
 import './About.css';
 
 const About = () => {
   return (
     <section className="abouts">
-      <div className="container">
+      <div className="about-container"> {/* renamed */}
         <motion.h2 
           className="section-title"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           About <span>Us</span>
         </motion.h2>
 
-        <motion.div
-          className="content"
+        <motion.p
+          className="section-lead"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
+          We are committed to delivering excellence in software development, data-driven innovation, and intelligent automation.
+        </motion.p>
+
+        <motion.div
+          className="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <div className="content-grid">
+            {/* Block 1 */}
             <div className="content-block">
               <div className="icon-box">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -35,7 +44,8 @@ const About = () => {
                 We focus on intuitive design, scalable architecture, and seamless API integration to deliver reliable, high-performing applications.
               </p>
             </div>
-            
+
+            {/* Block 2 */}
             <div className="content-block">
               <div className="icon-box">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">

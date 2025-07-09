@@ -74,32 +74,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
+  width: 140px;
+  height: 140px;
   background: rgba(87, 98, 116, 0.08);
   border-radius: 50%;
   margin-bottom: 1rem;
 }
 
 .icon img {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
+}
+
+
+.card h3 {
+  color: #0f172a;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .card ul {
   margin: 1rem 0 0 0;
   padding: 0;
   list-style: none;
+  text-align: center;   
+  width: 100%;
 }
 
 .card li {
   font-size: 0.95rem;
   color: #334155;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  display: block;       
+  width: 100%;          
 }
 
-/* Optional: Card hover or elevation effect */
+
+
 .grid > * {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

@@ -7,11 +7,10 @@ const services = [
     description: 'Tailored solutions from mobile apps to enterprise platforms designed to meet your business goals.',
     image: '/Images/custom.svg',
     items: [
-      'Mobile App Development iOS & Android',
-      'Web Application Development',
-      'Enterprise Software Solutions',
-      'UI/UX Design',
-      'API Integration & Third-Party Services',
+      'Mobile & Web Applications',
+  'Enterprise Software Systems',
+  'UI/UX Design Prototypes',
+  '3rd-Party API Integration',
     ],
   },
   {
@@ -19,10 +18,10 @@ const services = [
     description: 'Leverage AI to drive smarter decisions and automate processes.',
     image: '/Images/ArtificialIntelligence.svg',
     items: [
-      'Custom AI Model Development',
-      'Predictive Analytics',
-      'Natural Language Processing (NLP)',
-      'Computer Vision Solutions',
+      'AI Model Training & Deployment',
+  'Predictive Analytics Solutions',
+  'NLP & Chatbot Systems',
+  'Computer Vision Applications',
     ],
   },
   {
@@ -30,10 +29,10 @@ const services = [
     description: 'A system that uses machine learning to forecast trends and automate insights.',
     image: '/Images/predictiveAnalysis.svg',
     items: [
-    'TensorFlow / Scikit-learn – Model training',
-    'Python – Data processing',
-    'Flask – API deployment',
-    'Pandas – Feature engineering',
+      'Trend Forecasting with ML',
+  'Real-Time Data Processing',
+  'API Deployment with Flask',
+  'Feature Engineering with Pandas',
     ],
   },
   {
@@ -42,8 +41,9 @@ const services = [
     image: '/Images/Visualization.svg',
     items: [
       'Interactive Dashboards',
-      'Business Intelligence (BI) Solutions',
-      'Visual Reporting & Analytics',
+  'Custom BI Solutions',
+  'Real-Time Analytics',
+  'Clean & Insightful Reports',
     ],
   },
   {
@@ -51,10 +51,10 @@ const services = [
     description: 'Automate data collection and processing workflows.',
     image: '/Images/Dataextraction.svg',
     items: [
-      'Web & Social Media Data Extraction',
-      'Automated Data Collection Pipelines',
-      'Workflow Automation',
-      'Robotic Process Automation (RPA)',
+      'Web Data Crawling & Parsing',
+  'Automated Workflow Systems',
+  'Social Media Data Extraction',
+  'RPA for Business Processes',
     ],
   },
   {
@@ -62,12 +62,10 @@ const services = [
     description: 'Seamlessly connect your systems with third-party services and internal APIs.',
     image: '/Images/apiIntegeration.svg',
     items: [
-      'REST API Development & Integration',
-      'GraphQL API Implementation',
-      'Webhook Configuration',
-      'Third-Party Service Integration',
-      'Authentication & Authorization Setup',
-      'API Documentation & Testing',
+      'REST & GraphQL Integration',
+  'Webhook & Auth Setup',
+  'Internal API Development',
+  'API Testing & Documentation',
     ],
   },
 ];
@@ -100,7 +98,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div className="card" key={index}>
               <div className="icon">
-                <img src={service.image} alt={service.title + ' icon'} style={{ width: 80, height: 80 }} />
+                <img src={service.image} alt={service.title + ' icon'} />
               </div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
