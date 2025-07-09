@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { FaRobot, FaCode, FaChartLine, FaPlug } from 'react-icons/fa';
+import { FaRobot, FaCode, FaChartLine, FaPlug, FaTools, FaFolder, FaFolderOpen, FaHandshake, FaInfoCircle } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -19,22 +19,22 @@ const Header = () => {
     { 
       name: 'Services', 
       href: '/services',
-      icon: <FaCode className="navIcon" />
+      icon: <FaTools className="navIcon" />
     },
     { 
       name: 'Projects', 
       href: '/projects',
-      icon: <FaChartLine className="navIcon" />
+      icon: <FaFolderOpen className="navIcon" />
     },
     { 
       name: 'About', 
       href: '/about',
-      icon: <FaRobot className="navIcon" />
+      icon: <FaInfoCircle className="navIcon" />
     },
     { 
       name: 'Contact', 
       href: '/contact',
-      icon: <FaPlug className="navIcon" />
+      icon: <FaHandshake className="navIcon" />
     },
   ];
 

@@ -83,7 +83,7 @@ const Services = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          Our Services
+          Our <span>Services</span>
         </motion.h2>
 
         <motion.p

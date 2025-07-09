@@ -91,10 +91,11 @@
   gap: 0.5rem;
   padding: 0.6rem 1rem;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   border-radius: 8px;
   transition: all 0.3s ease;
   color: white;
+  text-decoration: none;
 }
 
 .navIcon {
@@ -113,9 +114,7 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-.active .navIcon {
-  color: #0d6efd; /* Active icon color */
-}
+
 
 .ctaButton {
   position: relative;
@@ -125,12 +124,13 @@
   color: rgb(8, 8, 8);
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.2  rem;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
 
 .ctaButton::before {

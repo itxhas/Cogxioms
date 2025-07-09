@@ -1,5 +1,6 @@
 // Team.jsx
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import './Team.css';
 
 const teamMembers = [
@@ -52,7 +53,15 @@ const Team = () => {
     <section className="team-section">
       <div className="team-container">
         <div className="team-header">
-          <h2 className="team-title">Our Team</h2>
+          <motion.h2
+            className="team-title"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Our <span>Team</span>
+          </motion.h2>
           <p className="team-subtitle">Meet the talented individuals behind our success</p>
         </div>
 

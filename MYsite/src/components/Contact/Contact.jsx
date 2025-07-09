@@ -19,7 +19,7 @@ const contacts = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          Get In Touch
+          Get <span>In Touch</span>
         </motion.h2>
 
         <motion.p
@@ -102,9 +102,8 @@ const contacts = () => {
               <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
             </div>
 
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="secondaryBtn">
               Send Message
-              <span className="btn-arrow">→</span>
             </button>
           </motion.form>
         </div>

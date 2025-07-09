@@ -1,15 +1,123 @@
-.about {
+.abouts {
   padding: var(--section-padding);
+  margin-top: 200px;
   background-color: var(--background-color);
+  position: relative;
 }
 
-.content {
-  max-width: 800px;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-.content p {
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+  text-align: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title span {
+  color: inherit;
+  position: relative;
+}
+
+.section-title span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(90deg, rgba(13, 110, 253, 0.3), rgba(13, 110, 253, 0.1));
+  z-index: -1;
+  border-radius: 20px;
+  transform: rotate(-1deg);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.content-block {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.content-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(13, 110, 253, 0.05));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon-box svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.5;
+  color: #0d6efd;
+}
+
+.content-block p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   line-height: 1.8;
+  color: #444;
+}
+
+.highlighted {
+  font-weight: 600;
+  color: #222 !important;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.highlighted::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #0d6efd, #6c8dff);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .content-block {
+    padding: 1.5rem;
+  }
 }
