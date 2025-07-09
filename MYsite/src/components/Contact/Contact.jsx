@@ -5,7 +5,7 @@ import './contact.css';
 const contacts = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    
     console.log('Form submitted');
   };
 
@@ -72,7 +72,7 @@ const contacts = () => {
                 </div>
                 <div className="contacts-details">
                   <h4>Website</h4>
-                  <a href="https://www.cogxoms.com" target="_blank" rel="noopener noreferrer">www.cogxoms.com</a>
+                  <a href="https://www.cogxioms.com" target="_blank" rel="noopener noreferrer">www.cogxoms.com</a>
                 </div>
               </div>
             </div>

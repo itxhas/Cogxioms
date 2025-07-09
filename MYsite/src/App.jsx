@@ -4,13 +4,26 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.css';
 
-// Lazy load all major pages
-const Home = lazy(() => import('./components/Home/Home'));
+// Lazy load all sections
+const Hero = lazy(() => import('./components/Hero/Hero'));
 const About = lazy(() => import('./components/About/About'));
 const Services = lazy(() => import('./components/Services/Services'));
 const Projects = lazy(() => import('./components/Projects/Projects'));
 const Team = lazy(() => import('./components/Team/Team'));
 const Contact = lazy(() => import('./components/Contact/Contact'));
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Services />
+      <Projects />
+      <Team />
+      <Contact />
+    </>
+  );
+}
 
 function App() {
   return (
@@ -21,7 +34,7 @@ function App() {
         <main>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/projects" element={<Projects />} />

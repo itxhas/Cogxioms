@@ -88,7 +88,7 @@
   width: 28px;
   height: 28px;
   stroke-width: 1.5;
-  color: #0d6efd;
+  color: #0f172a;;
 }
 
 .content-block p {
@@ -100,7 +100,7 @@
 
 .highlighted {
   font-weight: 600;
-  color: #222 !important;
+  color: #0f172a;
   position: relative;
   padding-left: 1rem;
 }

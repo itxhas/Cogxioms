@@ -6,14 +6,14 @@
   width: 100%;
   padding: 0.6rem 0;
   z-index: 1000;
-  background: var(--primary); /* Darker semi-transparent background*/
+  background: var(--primary); 
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* More subtle border 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
 .scrolled {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Stronger shadow when scrolled */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
 }
 
 .container {
@@ -51,7 +51,7 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #0d6efd; /* Changed to your requested color */
+  background: #0d6efd;
   border-radius: 50%;
   top: -2px;
   right: -8px;
@@ -104,7 +104,7 @@
 }
 
 .navLink:hover {
-  color: white; /* Keep color white on hover */
+  color: white; 
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -176,7 +176,7 @@
   max-width: 300px;
   height: 100vh;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.95);
+  background: #0f172a;
   backdrop-filter: blur(15px);
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
   z-index: 1001;
@@ -198,10 +198,11 @@
 .mobileCta {
   margin-top: 1rem;
   padding: 1rem;
-  background: white;
+  background:white;
   border-radius: 8px;
   text-align: center;
   font-weight: 600;
+  color: #0f172a;
 }
 
 @media (max-width: 1024px) {

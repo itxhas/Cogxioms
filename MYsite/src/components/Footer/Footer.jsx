@@ -63,13 +63,13 @@ const Footer = () => {
               <h3 className="column-title">Contact Info</h3>
               <ul className="contact-info">
                 <li>
-                  <a href="https://www.cognions.com/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.cogxioms.com/" target="_blank" rel="noopener noreferrer">
                     <FiGlobe className="contact-icon" />
-                    https://www.cogxioms.com/
+                    www.cogxioms.com
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@cognions.com">
+                  <a href="mailto:info@cogxioms.com">
                     <FiMail className="contact-icon" />
                     info@cogxioms.com
                   </a>
