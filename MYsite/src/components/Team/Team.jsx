@@ -6,7 +6,7 @@ const teamMembers = [
   {
     id: 1,
     name: 'Muhammad Haseeb',
-    role: 'UI/UX Engineer',
+    role: 'Full-stack Developer',
     image: '/Images/Haseeb.png',
     bio: 'Experienced in React, Node.js, and modern web development practices.'
   },

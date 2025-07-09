@@ -69,14 +69,16 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@cogxioms.com">
+                  <a href="mailto:axioms.solutions.3@gmail.com">
                     <FiMail className="contact-icon" />
                     info@cogxioms.com
                   </a>
                 </li>
                 <li>
+                  <a href='https://maps.app.goo.gl/9P4kFadkoCSqDR4o6' target='_blank'>
                   <FiMapPin className="contact-icon" />
-                  Sabzazar Block C 
+                   Sabzazar Block C
+                   </a>
                 </li>
               </ul>
             </motion.div>

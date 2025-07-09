@@ -1,6 +1,6 @@
 .abouts {
   padding: var(--section-padding);
-  margin-top: 100px;
+  margin-top: 10px;
   background-color: var(--background-color);
   position: relative;
   text-align: center;
@@ -112,7 +112,7 @@
   top: 0;
   height: 100%;
   width: 4px;
-  background: linear-gradient(to bottom, #0d6efd, #6c8dff);
+  background: linear-gradient(to bottom, #0f172a, #a7b9fa);
   border-radius: 4px;
 }
 

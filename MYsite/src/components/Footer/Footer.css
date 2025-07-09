@@ -99,7 +99,9 @@
   flex-direction: column;
   gap: 0.8rem;
 }
-
+.footer-links li {
+  color: #94a3b8;
+}
 
 .footer-links li a {
   color: #94a3b8;
@@ -189,42 +191,43 @@
   .footer-main {
     padding: 3rem 0;
   }
-  
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
-    justify-items: start;
+    justify-items: center;
   }
-  
+  .footer-column {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
   .brand-column {
     max-width: 100%;
     text-align: center;
   }
-  
   .social-links {
     margin-top: 1.5rem;
     justify-content: center;
   }
-  
   .column-title {
     font-size: 1.1rem;
-  }
-  
-  .footer-column {
-    align-items: center;
     text-align: center;
   }
-  
   .column-title::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
   .footer-links {
     align-items: center;
+    text-align: center;
+    width: 100%;
   }
-  
   .contact-info {
     align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .contact-info li {
+    justify-content: center;
   }
 }
