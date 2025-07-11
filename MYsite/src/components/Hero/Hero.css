@@ -6,6 +6,7 @@
   background: white;
   position: relative;
   overflow: hidden;
+  font-family: inherit;
 }
 
 .hero::before {
@@ -68,6 +69,7 @@
   color: var(--primary);
   position: relative;
   display: inline-block;
+  font-size: 3.4rem;
 }
 
 .content h1 span::after {

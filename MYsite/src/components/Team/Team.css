@@ -1,8 +1,9 @@
-  /* Team.css */
+/* Team.css */
   .team-section {
     padding: 4rem 2rem;
     background-color: white;
     text-align: center;
+    font-family: inherit;
   }
 
   .team-container {

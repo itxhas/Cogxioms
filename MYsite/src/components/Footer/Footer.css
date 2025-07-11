@@ -3,7 +3,7 @@
 .footer {
   background-color: var(--primary); /* Dark blue background */
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
 }
 
 .footer-main {

@@ -21,13 +21,13 @@ const Footer = () => {
                 Empowering businesses with intelligent, scalable solutions that drive innovation and growth.
               </p>
               <div className="social-links">
-                <a href="https://github.com/cognions" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/MuhammadHaseeb1285" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                   <FiGithub />
                 </a>
-                <a href="https://linkedin.com/company/cognions" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/company/106883372/admin/dashboard/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                   <FiLinkedin />
                 </a>
-                <a href="https://twitter.com/cognions" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                   <FiTwitter />
                 </a>
               </div>

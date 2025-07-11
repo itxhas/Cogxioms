@@ -1,6 +1,6 @@
 .abouts {
   padding: var(--section-padding);
-  margin-top: 10px;
+  margin-top: 80px;
   background-color: var(--background-color);
   position: relative;
   text-align: center;
@@ -134,4 +134,8 @@
   .content-block {
     padding: 1.5rem;
   }
+}
+
+.about {
+  font-family: inherit;
 }

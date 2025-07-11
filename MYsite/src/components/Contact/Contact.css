@@ -2,6 +2,7 @@
 .contacts-section {
   padding: 5rem 0;
   background-color: white;
+  font-family: inherit;
 }
 
 .contacts-container {
