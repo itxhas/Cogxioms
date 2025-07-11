@@ -14,7 +14,7 @@ const teamMembers = [
     id: 2,
     name: 'Hassan Ali ',
     role: 'Software Engineer',
-    image: '/Images/Hassan.png',
+    image: '/Images/Hassan.jpg',
     bio: 'Specializes in creating intuitive user interfaces and engaging experiences.'
   },
   {
