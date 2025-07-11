@@ -21,7 +21,7 @@ const teamMembers = [
     id: 3,
     name: 'Mian Mubasher',
     role: 'AI Engineer',
-    image: '/Images/MianMuhammad.png',
+    image: '/Images/MianMuhammad.jpg',
     bio: 'Expert in database architecture and server-side development.'
   }
 ];
