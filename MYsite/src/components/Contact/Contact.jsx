@@ -62,7 +62,7 @@ const contacts = () => {
                 </div>
                 <div className="contacts-details">
                   <h4>Phone</h4>
-                  <a href="tel:03468767647">0346 8767647</a>
+                  <a href="tel:03468767647">+923130107453</a>
                 </div>
               </div>
 
@@ -72,7 +72,7 @@ const contacts = () => {
                 </div>
                 <div className="contacts-details">
                   <h4>Website</h4>
-                  <a href="https://www.cogxioms.com" target="_blank" rel="noopener noreferrer">www.cogxoms.com</a>
+                  <a href="https://www.cogxioms.com" target="_blank" rel="noopener noreferrer">www.cogxioms.com</a>
                 </div>
               </div>
             </div>
