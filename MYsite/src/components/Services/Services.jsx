@@ -8,9 +8,9 @@ const services = [
     image: '/Images/custom.svg',
     items: [
       'Mobile & Web Applications',
-  'Enterprise Software Systems',
-  'UI/UX Design Prototypes',
-  '3rd-Party API Integration',
+      'Enterprise Software Systems',
+      'UI/UX Design Prototypes',
+      '3rd-Party API Integration',
     ],
   },
   {
@@ -19,9 +19,9 @@ const services = [
     image: '/Images/ArtificialIntelligence.svg',
     items: [
       'AI Model Training & Deployment',
-  'Predictive Analytics Solutions',
-  'NLP & Chatbot Systems',
-  'Computer Vision Applications',
+      'Predictive Analytics Solutions',
+      'NLP & Chatbot Systems',
+      'Computer Vision Applications',
     ],
   },
   {
@@ -30,9 +30,9 @@ const services = [
     image: '/Images/predictiveAnalysis.svg',
     items: [
       'Trend Forecasting with ML',
-  'Real-Time Data Processing',
-  'API Deployment with Flask',
-  'Feature Engineering with Pandas',
+      'Real-Time Data Processing',
+      'API Deployment with Flask',
+      'Feature Engineering with Pandas',
     ],
   },
   {
@@ -41,9 +41,9 @@ const services = [
     image: '/Images/Visualization.svg',
     items: [
       'Interactive Dashboards',
-  'Custom BI Solutions',
-  'Real-Time Analytics',
-  'Clean & Insightful Reports',
+      'Custom BI Solutions',
+      'Real-Time Analytics',
+      'Clean & Insightful Reports',
     ],
   },
   {
@@ -52,9 +52,9 @@ const services = [
     image: '/Images/Dataextraction.svg',
     items: [
       'Web Data Crawling & Parsing',
-  'Automated Workflow Systems',
-  'Social Media Data Extraction',
-  'RPA for Business Processes',
+      'Automated Workflow Systems',
+      'Social Media Data Extraction',
+      'RPA for Business Processes',
     ],
   },
   {
@@ -63,14 +63,64 @@ const services = [
     image: '/Images/apiIntegeration.svg',
     items: [
       'REST & GraphQL Integration',
-  'Webhook & Auth Setup',
-  'Internal API Development',
-  'API Testing & Documentation',
+      'Webhook & Auth Setup',
+      'Internal API Development',
+      'API Testing & Documentation',
     ],
   },
 ];
 
 const Services = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+  };
+
+  const iconVariants = {
+    hover: {
+      scale: 1.1,
+      rotate: 5,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.4
+      }
+    }
+  };
+
   return (
     <section className="services">
       <div className="container">
@@ -78,7 +128,7 @@ const Services = () => {
           className="section-title"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           Our <span>Services</span>
@@ -88,28 +138,55 @@ const Services = () => {
           className="subtitle"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
           We offer comprehensive solutions to transform your business with cutting-edge technology.
         </motion.p>
 
-        <div className="grid">
+        <motion.div 
+          className="grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {services.map((service, index) => (
-            <div className="card" key={index}>
-              <div className="icon">
+            <motion.div 
+              className="card" 
+              key={index}
+              variants={cardVariants}
+              whileHover={{ 
+                y: -10,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <motion.div 
+                className="icon"
+                variants={iconVariants}
+                whileHover="hover"
+              >
                 <img src={service.image} alt={service.title + ' icon'} />
-              </div>
+              </motion.div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
               <ul>
                 {service.items.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <motion.li 
+                    key={i}
+                    variants={itemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    {item}
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

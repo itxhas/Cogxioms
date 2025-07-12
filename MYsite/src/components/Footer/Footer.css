@@ -4,13 +4,15 @@
   background-color: var(--primary); /* Dark blue background */
   color: #ffffff;
   font-family: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 .footer-main {
-  padding: 4rem 0;
+  padding: 3rem 0;
 }
 
-.container {
+.footer .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
@@ -161,6 +163,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #94a3b8;
   font-size: 0.9rem;
+  margin: 0;
 }
 
 .footer-copyright .container {

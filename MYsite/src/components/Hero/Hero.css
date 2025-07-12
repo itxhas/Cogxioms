@@ -77,11 +77,47 @@
   position: absolute;
   bottom: 5px;
   left: 0;
-  width: 100%;
+  width: 0;
   height: 8px;
-  background: rgba(13, 110, 253, 0.3);
+  background: linear-gradient(90deg, rgba(13, 110, 253, 0.4), rgba(13, 110, 253, 0.2));
   z-index: -1;
   border-radius: 4px;
+  animation: underlineExpand 1.2s ease-out 0.8s forwards;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.2);
+}
+
+@keyframes underlineExpand {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Typing Animation Styles */
+.typing-text {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+  font-size: 3.4rem;
+  min-width: 400px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 .content p {
@@ -109,6 +145,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   margin: 0 auto;
   padding: 1rem 2.2rem;
   background: transparent;
@@ -124,6 +161,13 @@
   cursor: pointer;
   z-index: 1;
   animation: pulseBtn 2s infinite;
+  text-decoration: none;
+}
+
+.btn-arrow {
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
 }
 
 .secondaryBtn::before {
@@ -207,6 +251,10 @@
     height: 400px;
     margin-top: 1rem;
   }
+
+  .typing-text {
+    min-width: 300px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -228,21 +276,13 @@
     width: 80%;
     padding: 0.9rem;
   }
+  
   .hero-right{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    display: none; /* Hide Lottie animation on mobile */
   }
-  .lottie-wrapper {
-    width: 160px;
-    height: 160px;
-    min-width: 120px;
-    min-height: 120px;
-    max-width: 200px;
-    max-height: 200px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+
+  .typing-text {
+    min-width: 250px;
+    font-size: 2.5rem;
   }
 }

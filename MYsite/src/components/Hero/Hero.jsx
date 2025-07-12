@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import lottie from 'lottie-web';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,16 @@ import './Hero.css';
 
 const Hero = () => {
   const lottieContainer = useRef(null);
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const typingTexts = [
+    "Intelligent Solutions",
+    "AI-Powered Systems", 
+    "Modern Technology",
+    "Innovation & Growth"
+  ];
 
   useEffect(() => {
     // Clean up any previous animation instance
@@ -22,43 +32,153 @@ const Hero = () => {
     return () => lottie.destroy();
   }, []);
 
+  useEffect(() => {
+    const typingSpeed = isDeleting ? 50 : 100;
+    const deletingSpeed = 50;
+    const pauseTime = 2000;
+
+    const typeText = () => {
+      const currentText = typingTexts[textIndex];
+      
+      if (isDeleting) {
+        setCharIndex(prev => prev - 1);
+        if (charIndex === 0) {
+          setIsDeleting(false);
+          setTextIndex((prev) => (prev + 1) % typingTexts.length);
+        }
+      } else {
+        setCharIndex(prev => prev + 1);
+        if (charIndex === currentText.length) {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      }
+    };
+
+    const timer = setTimeout(typeText, isDeleting ? deletingSpeed : typingSpeed);
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, textIndex, typingTexts]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      scale: 1.05,
+      y: -5,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    tap: {
+      scale: 0.95,
+      transition: {
+        duration: 0.1
+      }
+    }
+  };
+
+  const lottieVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const currentText = typingTexts[textIndex];
+  const displayText = currentText.substring(0, charIndex);
+
   return (
     <section className="hero" id="home">
       <div className="hero-container">
         <motion.div
           className="hero-left content"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
           <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            variants={textVariants}
           >
-            Empowering Businesses with <span>Intelligent Solutions</span>
+            Empowering Businesses with{' '}
+            <span className="typing-text">
+              {displayText}
+              <span className="cursor">|</span>
+            </span>
           </motion.h1>
+          
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            variants={textVariants}
           >
             We transform ideas into reality by leveraging AI, automation, and modern technology to drive innovation and growth.
           </motion.p>
+          
           <motion.div
             className="buttons"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            variants={textVariants}
           > 
-            <Link to="/contact" className="secondaryBtn">
-              Get in Touch
-            </Link>
+            <motion.div
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <Link to="/contact" className="secondaryBtn">
+                Get in Touch
+                <motion.span
+                  className="btn-arrow"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  →
+                </motion.span>
+              </Link>
+            </motion.div>
           </motion.div>
         </motion.div>
-        <div className="hero-right">
+        
+        <motion.div 
+          className="hero-right"
+          variants={lottieVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div ref={lottieContainer} style={{ width: 500, height: 500 }} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

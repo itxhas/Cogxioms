@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { NavLink } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiMapPin, FiGlobe } from 'react-icons/fi';
 import './Footer.css';
 
@@ -43,12 +44,30 @@ const Footer = () => {
             >
               <h3 className="column-title">Quick Links</h3>
               <ul className="footer-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/team">Team</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li>
+                  <NavLink
+                    to="/"
+                    onClick={e => {
+                      // If already on home, scroll to hero section
+                      if (window.location.pathname === "/") {
+                        e.preventDefault();
+                        const hero = document.getElementById("home");
+                        if (hero) {
+                          hero.scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                      }
+                    }}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li><NavLink to="/about">About</NavLink></li>
+                <li><NavLink to="/services">Services</NavLink></li>
+                <li><NavLink to="/projects">Projects</NavLink></li>
+                <li><NavLink to="/team">Team</NavLink></li>
+                <li><NavLink to="/contact">Contact</NavLink></li>
               </ul>
             </motion.div>
 

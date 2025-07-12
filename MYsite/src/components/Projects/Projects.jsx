@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./Projects.css";
 
 const projects = [
@@ -76,6 +76,93 @@ const projects = [
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+  };
+
+  const imageVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.3,
+        ease: "easeIn"
+      }
+    }
+  };
+
+  const techStackVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const techItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section className="projects-section">
       <div className="projects-container">
@@ -84,7 +171,7 @@ const Projects = () => {
             className="projects-title"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             Our <span>Projects</span>
@@ -93,51 +180,139 @@ const Projects = () => {
             className="projects-subtitle"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
             Explore our portfolio of successful projects delivering real business value.
           </motion.p>
         </div>
 
-        <div className="projects-grid">
+        <motion.div 
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {projects.map((project, index) => (
-            <div className="project-card" key={index}>
-              <img src={project.image} alt={project.title} />
+            <motion.div 
+              className="project-card" 
+              key={index}
+              variants={cardVariants}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <motion.div
+                className="image-container"
+                variants={imageVariants}
+                whileHover="hover"
+              >
+                <img src={project.image} alt={project.title} />
+              </motion.div>
               <div className="card-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
                 <div className="project-button-wrapper">
-                  <button
+                  <motion.button
                     className="learn-more-button"
                     onClick={() => setSelectedProject(project)}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ 
+                      scale: 0.95,
+                      transition: { duration: 0.1 }
+                    }}
                   >
                     Learn More
-                  </button>
+                  </motion.button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {selectedProject && (
-          <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={() => setSelectedProject(null)}>&times;</button>
-              <img src={selectedProject.image} alt={selectedProject.title} style={{ width: '100%', height: 'auto', borderRadius: '8px', marginBottom: '1rem' }} />
-              <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>{selectedProject.title}</h2>
-              <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{selectedProject.description}</p>
-              <p style={{ fontSize: '0.95rem', color: '#555', marginBottom: '1.5rem' }}>
-                This project was developed as part of our initiative to deliver modern, scalable, and user-focused solutions across various industries. It demonstrates our technical depth and ability to solve real-world problems.
-              </p>
-              <div className="tech-stack-container">
-                {selectedProject.techStack.map((tech, i) => (
-                  <div className="tech-item" key={i}>{tech}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div 
+              className="modal-overlay" 
+              onClick={() => setSelectedProject(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div 
+                className="modal-content" 
+                onClick={(e) => e.stopPropagation()}
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <motion.button 
+                  className="modal-close" 
+                  onClick={() => setSelectedProject(null)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  &times;
+                </motion.button>
+                <motion.img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  style={{ width: '100%', height: 'auto', borderRadius: '8px', marginBottom: '1rem' }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                />
+                <motion.h2 
+                  style={{ textAlign: 'center', marginBottom: '1rem' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
+                >
+                  {selectedProject.title}
+                </motion.h2>
+                <motion.p 
+                  style={{ marginBottom: '1rem', lineHeight: '1.6' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
+                >
+                  {selectedProject.description}
+                </motion.p>
+                <motion.p 
+                  style={{ fontSize: '0.95rem', color: '#555', marginBottom: '1.5rem' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.4 }}
+                >
+                  This project was developed as part of our initiative to deliver modern, scalable, and user-focused solutions across various industries. It demonstrates our technical depth and ability to solve real-world problems.
+                </motion.p>
+                <motion.div 
+                  className="tech-stack-container"
+                  variants={techStackVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {selectedProject.techStack.map((tech, i) => (
+                    <motion.div 
+                      className="tech-item" 
+                      key={i}
+                      variants={techItemVariants}
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
