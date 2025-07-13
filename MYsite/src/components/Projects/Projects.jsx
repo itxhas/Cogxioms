@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Projects.css";
 
@@ -13,7 +13,7 @@ const projects = [
       "Chart.js – Visualizes analytics through interactive graphs",
       "Firebase – Handles authentication, storage, and real-time syncing",
     ],
-    image: "/Images/starlink-dashboard.jpg",
+    image: "/Images/Starlink.png",
   },
   {
     title: "Bakery Website",
@@ -24,7 +24,7 @@ const projects = [
       "JavaScript – Interactive frontend",
       "Tailwind CSS – Clean, responsive UI",
     ],
-    image: "/Images/bakery-website.jpg",
+    image: "/Images/BakerySystem.png",
   },
   {
     title: "Rice Quality Detection APP",
@@ -35,7 +35,7 @@ const projects = [
       "Flutter – Cross-platform mobile UI",
       "Firebase – Auth & storage handling",
     ],
-    image: "/Images/rice-app.jpg",
+    image: "/Images/riceQuality.png",
   },
   {
     title: "Robinhood Stock Prediction App",
@@ -46,7 +46,7 @@ const projects = [
       "Python – Data processing backend",
       "Flutter – Cross-platform mobile frontend",
     ],
-    image: "/Images/stock-app.jpg",
+    image: "/Images/Stock.png",
   },
   {
     title: "Geographic Loan Analysis Dashboard",
@@ -57,7 +57,7 @@ const projects = [
       "GeoJSON – Region-wise boundary mapping",
       "Excel – Loan data source",
     ],
-    image: "/Images/loan-dashboard.jpg",
+    image: "/Images/Dashboard.png",
   },
   {
     title: "Child Bureau - Welfare Management",
@@ -69,12 +69,22 @@ const projects = [
       "Jinja2 + HTML/CSS – Frontend templates",
       "ReportLab – PDF generation",
     ],
-    image: "/Images/child-bureau.jpg",
+    image: "/Images/Child.png",
   },
 ];
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -186,133 +196,34 @@ const Projects = () => {
             Explore our portfolio of successful projects delivering real business value.
           </motion.p>
         </div>
-
-        <motion.div 
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {projects.map((project, index) => (
-            <motion.div 
-              className="project-card" 
-              key={index}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -8,
-                transition: { duration: 0.3 }
-              }}
-            >
-              <motion.div
-                className="image-container"
-                variants={imageVariants}
-                whileHover="hover"
-              >
-                <img src={project.image} alt={project.title} />
-              </motion.div>
-              <div className="card-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-button-wrapper">
-                  <motion.button
-                    className="learn-more-button"
-                    onClick={() => setSelectedProject(project)}
-                    whileHover={{ 
-                      scale: 1.05,
-                      transition: { duration: 0.2 }
-                    }}
-                    whileTap={{ 
-                      scale: 0.95,
-                      transition: { duration: 0.1 }
-                    }}
-                  >
-                    Learn More
-                  </motion.button>
+        <div className="projects-list">
+          {projects.map((project, index) => {
+            const techs = project.techStack.map(t => t.split('–')[0].trim());
+            const isEven = index % 2 === 0;
+            const cardClass = `project-card alt-layout-${isEven ? 'left' : 'right'}${isMobile ? ' mobile' : ''}`;
+            return (
+              <div className={cardClass} key={index}>
+                <div className="project-image-card">
+                  <div className="project-image-container tilt-image blue-glow">
+                    <img src={project.image} alt={project.title} className="project-image" />
+                  </div>
+                </div>
+                <div className="project-info-card">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <ul className="project-tech-list">
+                    {techs.map((tech, i) => (
+                      <li key={i} className="project-tech-item">{tech}</li>
+                    ))}
+                  </ul>
+                  <div className="project-button-wrapper">
+                    <button className="learn-more-button">Learn More</button>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <AnimatePresence>
-          {selectedProject && (
-            <motion.div 
-              className="modal-overlay" 
-              onClick={() => setSelectedProject(null)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div 
-                className="modal-content" 
-                onClick={(e) => e.stopPropagation()}
-                variants={modalVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <motion.button 
-                  className="modal-close" 
-                  onClick={() => setSelectedProject(null)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  &times;
-                </motion.button>
-                <motion.img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title} 
-                  style={{ width: '100%', height: 'auto', borderRadius: '8px', marginBottom: '1rem' }}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                />
-                <motion.h2 
-                  style={{ textAlign: 'center', marginBottom: '1rem' }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                >
-                  {selectedProject.title}
-                </motion.h2>
-                <motion.p 
-                  style={{ marginBottom: '1rem', lineHeight: '1.6' }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                >
-                  {selectedProject.description}
-                </motion.p>
-                <motion.p 
-                  style={{ fontSize: '0.95rem', color: '#555', marginBottom: '1.5rem' }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.4 }}
-                >
-                  This project was developed as part of our initiative to deliver modern, scalable, and user-focused solutions across various industries. It demonstrates our technical depth and ability to solve real-world problems.
-                </motion.p>
-                <motion.div 
-                  className="tech-stack-container"
-                  variants={techStackVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {selectedProject.techStack.map((tech, i) => (
-                    <motion.div 
-                      className="tech-item" 
-                      key={i}
-                      variants={techItemVariants}
-                    >
-                      {tech}
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

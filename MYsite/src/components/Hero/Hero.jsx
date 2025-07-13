@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
-  const lottieContainer = useRef(null);
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -17,20 +16,20 @@ const Hero = () => {
     "Innovation & Growth"
   ];
 
-  useEffect(() => {
-    // Clean up any previous animation instance
-    if (lottieContainer.current) {
-      lottie.destroy();
-    }
-    lottie.loadAnimation({
-      container: lottieContainer.current,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: '/animations/hero.json',
-    });
-    return () => lottie.destroy();
-  }, []);
+  // useEffect(() => {
+  //   // Clean up any previous animation instance
+  //   if (lottieContainer.current) {
+  //     lottie.destroy();
+  //   }
+  //   lottie.loadAnimation({
+  //     container: lottieContainer.current,
+  //     renderer: 'svg',
+  //     loop: true,
+  //     autoplay: true,
+  //     path: '/animations/hero.json',
+  //   });
+  //   return () => lottie.destroy();
+  // }, []);
 
   useEffect(() => {
     const typingSpeed = isDeleting ? 50 : 100;
@@ -124,6 +123,15 @@ const Hero = () => {
 
   return (
     <section className="hero" id="home">
+      <video
+        className="hero-video-bg"
+        src="/videos/hero-video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      <div className="hero-bg-overlay"></div>
       <div className="hero-container">
         <motion.div
           className="hero-left content"
@@ -131,31 +139,18 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          <motion.h1
-            variants={textVariants}
-          >
+          <motion.h1 variants={textVariants}>
             Empowering Businesses with{' '}
             <span className="typing-text">
               {displayText}
               <span className="cursor">|</span>
             </span>
           </motion.h1>
-          
-          <motion.p
-            variants={textVariants}
-          >
+          <motion.p variants={textVariants}>
             We transform ideas into reality by leveraging AI, automation, and modern technology to drive innovation and growth.
           </motion.p>
-          
-          <motion.div
-            className="buttons"
-            variants={textVariants}
-          > 
-            <motion.div
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
+          <motion.div className="buttons" variants={textVariants}>
+            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
               <Link to="/contact" className="secondaryBtn">
                 Get in Touch
                 <motion.span
@@ -169,15 +164,6 @@ const Hero = () => {
               </Link>
             </motion.div>
           </motion.div>
-        </motion.div>
-        
-        <motion.div 
-          className="hero-right"
-          variants={lottieVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div ref={lottieContainer} style={{ width: 500, height: 500 }} />
         </motion.div>
       </div>
     </section>
