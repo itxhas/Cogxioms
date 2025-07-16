@@ -42,10 +42,12 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4) !important;
+  /* color: transparent !important; */
+  /* -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: none !important; */
   position: relative;
 }
 
@@ -56,7 +58,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4) !important;
   border-radius: 2px;
   transform: scaleX(0);
   animation: titleUnderline 2s ease-out 1s forwards;

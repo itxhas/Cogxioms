@@ -11,6 +11,7 @@ const Services = lazy(() => import('./components/Services/Services'));
 const Projects = lazy(() => import('./components/Projects/Projects'));
 const Team = lazy(() => import('./components/Team/Team'));
 const Contact = lazy(() => import('./components/Contact/Contact'));
+const ProjectDetail = lazy(() => import('./components/Projects/ProjectDetail'));
 
 // ScrollToTop Component
 const ScrollToTop = () => {
@@ -92,6 +93,7 @@ function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="*" element={<div>404 - Page Not Found</div>} />
             </Routes>
           </Suspense>

@@ -157,91 +157,12 @@ const Contact = () => {
         >
           {/* Contact Information */}
           <motion.div
-            className="contact-info-section"
+            className="contact-info-section lets-talk-visual"
             variants={itemVariants}
           >
-            <div className="info-card">
-              <motion.h3 
-                className="info-title"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                Get In Touch
-              </motion.h3>
-              
-              <motion.p
-                className="info-description"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                Have a project in mind? Let's discuss how we can help you achieve your goals.
-              </motion.p>
-
-              <div className="contact-items">
-                {contactInfo.map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    className="contact-item"
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, x: 10 }}
-                  >
-                    <motion.div 
-                      className="contact-icon"
-                      style={{ '--icon-color': item.color }}
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {item.icon}
-                    </motion.div>
-                    <div className="contact-details">
-                      <h4>{item.title}</h4>
-                      <a href={item.link} target="_blank" rel="noopener noreferrer">
-                        {item.value}
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Social Links */}
-              <motion.div
-                className="social-links"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h4>Follow Us</h4>
-                <div className="social-icons">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      className="social-icon"
-                      style={{ '--social-color': social.color }}
-                      whileHover={{ 
-                        scale: 1.2, 
-                        rotate: 10,
-                        y: -5
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      {social.icon}
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
+            <div className="lets-talk-heading">
+              <span className="lets-text">Let's</span><br />
+              <span className="talk-text">Talk!</span>
             </div>
           </motion.div>
 

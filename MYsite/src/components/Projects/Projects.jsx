@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 import "./Projects.css";
 
 const projects = [
@@ -76,6 +77,7 @@ const projects = [
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -217,7 +219,7 @@ const Projects = () => {
                     ))}
                   </ul>
                   <div className="project-button-wrapper">
-                    <button className="learn-more-button">Learn More</button>
+                    <button className="learn-more-button" onClick={() => navigate(`/projects/${index}`)}>Learn More</button>
                   </div>
                 </div>
               </div>
