@@ -261,21 +261,50 @@ const Services = () => {
                 ))}
               </div>
               <motion.button
-                className="view-details-btn"
+                className={`view-details-btn${expanded === idx ? ' expanded' : ''}`}
                 onClick={() => setExpanded(expanded === idx ? null : idx)}
                 aria-expanded={expanded === idx}
                 aria-controls={`service-details-${idx}`}
                 whileHover={{ scale: 1.03, boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                style={expanded === idx ? { background: '#ffe6c7', color: '#ff8811', borderColor: '#ff8811', position: 'sticky', top: 0, zIndex: 10 } : {}}
+                onMouseEnter={e => {
+                  if (expanded !== idx) {
+                    e.currentTarget.querySelector('.plus-icon').style.background = '#ff8811';
+                    e.currentTarget.querySelector('.plus-icon').style.color = '#fff';
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (expanded !== idx) {
+                    e.currentTarget.querySelector('.plus-icon').style.background = '';
+                    e.currentTarget.querySelector('.plus-icon').style.color = '#222';
+                  }
+                }}
               >
                 <span className="view-details-text">{expanded === idx ? 'Hide Details' : 'View Details'}</span>
                 <motion.span
                   className="plus-icon"
-                  animate={{ rotate: expanded === idx ? 45 : 0 }}
+                  animate={{ rotate: expanded === idx ? 0 : 0 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  style={{
+                    background: expanded === idx ? '#ff8811' : '',
+                    color: expanded === idx ? '#fff' : '#222',
+                    borderRadius: '6px',
+                    padding: '0 0.3em',
+                    width: '32px',
+                    height: '32px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 800,
+                    fontSize: '1.5em',
+                    boxSizing: 'border-box',
+                    border: expanded === idx ? '2px solid #ff8811' : '2px solid #ececec',
+                    transition: 'background 0.18s, color 0.18s, border 0.18s',
+                  }}
                 >
-                  +
+                  {expanded === idx ? <span style={{fontSize:'1.5em',fontWeight:800,display:'block',lineHeight:'1'}}>–</span> : '+'}
                 </motion.span>
               </motion.button>
             </div>
@@ -294,9 +323,8 @@ const Services = () => {
                     <ul className="expand-list">
                       {service.items.map((item, i) => (
                         <li className="expand-list-item" key={i}>
-                          <span className="tag-icon">{tagIcons[item.name] || '🔹'}</span>
-                          <span className="expand-item-name">{item.name}</span>
-                          <span className="expand-item-desc">{item.desc}</span>
+                          <span className="expand-item-name" style={{ fontSize: '0.98em', marginRight: '8px', whiteSpace: 'nowrap' }}>{item.name}</span>
+                          <span className="expand-item-desc" style={{ fontSize: '0.93em', color: '#888', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.desc}</span>
                         </li>
                       ))}
                     </ul>

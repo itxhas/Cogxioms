@@ -169,12 +169,12 @@
 
 /* Accordion */
 .service-card-expand {
-  background: #f8fafc;
   border-radius: 0 0 18px 18px;
-  box-shadow: none;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-top: 0.5rem;
   padding: 0 2.2rem 2.2rem 2.2rem;
-  overflow: hidden;
-  border: none;
+  position: relative;
 }
 .expand-inner {
   display: flex;
@@ -202,13 +202,30 @@
   gap: 8px;
 }
 .expand-list li {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: #333;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-  margin-bottom: 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  padding: 0.2em 0;
+  background: none;
+  border: none;
+}
+.expand-item-name {
+  font-weight: 600;
+  color: #222;
+  margin-right: 8px;
+  white-space: nowrap;
+  font-size: 0.98em;
+}
+.expand-item-desc {
+  color: #888;
+  font-size: 0.93em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Expanded image full width */
@@ -283,13 +300,7 @@
 }
 
 /* Remove old expand-list li and .item-desc column styles */
-.expand-list li {
-  display: contents;
-  flex-direction: unset;
-  align-items: unset;
-  gap: unset;
-  margin-bottom: unset;
-}
+/* .expand-list li { display: contents; ... } -- REMOVE this rule if present */
 .item-desc {
   display: none;
 }
@@ -356,6 +367,32 @@
   width: 100%;
   max-width: 700px;
   padding-top: 0.5em;
+}
+
+/* Sticky Hide Details button when expanded */
+.view-details-btn.expanded {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 12px rgba(255,136,17,0.08);
+  background: #ffe6c7 !important;
+  color: #ff8811 !important;
+  border-color: #ff8811 !important;
+}
+
+/* Sticky Hide Details button inside expanded area */
+.view-details-btn.expanded {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 12px rgba(255,136,17,0.08);
+  background: #ffe6c7 !important;
+  color: #ff8811 !important;
+  border-color: #ff8811 !important;
+  margin-bottom: 1.2rem;
+  margin-top: -1.2rem;
+  border-radius: 12px;
+  transition: box-shadow 0.18s, background 0.18s, color 0.18s, border 0.18s;
 }
 
 @media (max-width: 900px) {
@@ -429,5 +466,10 @@
     margin: 0 auto 1.2rem auto;
     max-width: 95vw;
     padding-top: 0.5em;
+  }
+  .view-details-btn.expanded {
+    top: 0;
+    margin-bottom: 1rem;
+    margin-top: -1rem;
   }
 }

@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { FiArrowRight, FiTarget, FiTrendingUp, FiUsers, FiAward, FiZap, FiShield, FiHeart } from 'react-icons/fi';
 import './About.css';
+import emailjs from '@emailjs/browser';
+import { useRef } from 'react';
 
 const About = () => {
   const location = useLocation();

@@ -220,7 +220,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(135deg, #ff8811, #f59e0b, #3b82f6, #8b5cf6);
   color: white;
   border-radius: 12px;
   font-weight: 600;

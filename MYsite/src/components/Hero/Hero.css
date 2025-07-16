@@ -165,7 +165,7 @@
 }
 
 .secondaryBtn {
-  background: #ff8811;
+  background: linear-gradient(90deg, #ff8811, #f59e0b, #ffcc29);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -203,7 +203,7 @@
 }
 
 .secondaryBtn:hover {
-  background: #0b2447;
+  background: #ff8811;
   color: #fff;
   transform: translateY(-5px) scale(1.05) rotate(-1deg);
   box-shadow: 0 8px 32px rgba(13, 110, 253, 0.5), 0 0 0 8px rgba(13, 110, 253, 0.15);
