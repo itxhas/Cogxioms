@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { FiArrowRight, FiTarget, FiTrendingUp, FiUsers, FiAward, FiZap, FiShield, FiHeart } from 'react-icons/fi';
 import './About.css';
 import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const About = () => {
   const location = useLocation();
@@ -96,9 +97,9 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <Link to="/about" className="learn-more-btn">
+            <Link to="/about" className="gradient-btn">
               <span>Learn More About Us</span>
-              <FiArrowRight className="arrow-icon" />
+              <FiArrowRight className="gradient-icon" />
               <div className="btn-glow"></div>
             </Link>
           </motion.div>
@@ -277,9 +278,146 @@ const About = () => {
             </div>
           </motion.div>
         </motion.div>
+        {/* Reviews Section */}
+        <AnimatedReviewsSection />
       </div>
     </section>
   );
 };
+
+// --- AnimatedReviewsSection: Scroll-triggered, stacking reviews ---
+function AnimatedReviewsSection() {
+  const reviews = [
+    {
+      text: '"Working with Eaglefur was a game-changer for our business. Their innovative solutions and dedication to quality exceeded our expectations."',
+      author: '- Sarah J., CEO, Visionary Brands'
+    },
+    {
+      text: '"The team at Eaglefur delivered our project on time and with exceptional attention to detail. Their expertise in tech and design is unmatched."',
+      author: '- Michael T., CTO, NextGen Solutions'
+    },
+    {
+      text: '"From start to finish, Eaglefur provided outstanding support and creative ideas. We saw measurable growth thanks to their work."',
+      author: '- Priya S., Founder, DataSpark'
+    },
+    {
+      text: '"Professional, responsive, and truly invested in our success. We felt like partners every step of the way."',
+      author: '- Ahmed R., COO, InnovateX'
+    },
+    {
+      text: '"Eaglefur transformed our vision into reality. We highly recommend them for any digital project!"',
+      author: '- Emily W., Marketing Director, BrightPath'
+    }
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { margin: '-40% 0px -40% 0px', amount: 0.5 });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = windowWidth <= 900;
+  const prev = useRef(current);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // On mobile, always auto-advance every 2 seconds. On desktop, only if in view and every 5 seconds.
+    if (isMobile && !paused) {
+      const interval = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % reviews.length);
+      }, 2000); // 2 seconds per review on mobile
+      return () => clearInterval(interval);
+    } else if (!isMobile && isSectionInView && !paused) {
+      const interval = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % reviews.length);
+      }, 5000); // 5 seconds per review on desktop
+      return () => clearInterval(interval);
+    }
+  }, [isMobile, isSectionInView, reviews.length, paused]);
+
+  // For sliding animation direction
+  useEffect(() => { prev.current = current; }, [current]);
+
+  // Only show up to 3 reviews in the stack for desktop, 1 for mobile
+  const stacked = isMobile
+    ? [{ ...reviews[current], stackIndex: 0, key: `${current}-0` }]
+    : [0, 1, 2].map((offset) => {
+        const idx = (current + offset) % reviews.length;
+        return { ...reviews[idx], stackIndex: offset, key: `${idx}-${offset}` };
+      });
+
+  // Set border-radius for review cards based on screen size
+  const reviewCardRadius = isMobile ? 18 : 32;
+
+  return (
+    <section ref={sectionRef} className="reviews-section about-detail-container" style={{ marginTop: '4rem', borderRadius: reviewCardRadius }}>
+      <div className="reviews-left" style={{ borderRadius: reviewCardRadius }}>
+        <h3 className="reviews-main-heading">What our clients say</h3>
+        <p className="reviews-subheading">Don't just take our word for it – hear it straight from our clients!</p>
+      </div>
+      <div
+        className="reviews-right"
+        onMouseEnter={!isMobile ? () => setPaused(true) : undefined}
+        onMouseLeave={!isMobile ? () => setPaused(false) : undefined}
+        style={{ borderRadius: reviewCardRadius }}
+      >
+        {!isMobile && (
+          <>
+            <button onClick={() => setCurrent((current - 1 + reviews.length) % reviews.length)} className="arrow left">‹</button>
+            <button onClick={() => setCurrent((current + 1) % reviews.length)} className="arrow right">›</button>
+          </>
+        )}
+        <AnimatePresence initial={false} key={isMobile ? current : undefined}>
+          {stacked.map((review) => {
+            return (
+              <motion.div
+                key={isMobile ? current : review.key}
+                className="review-card-stacked"
+                initial={isMobile ? { opacity: 0, x: 100 } : { opacity: 0, y: 60, scale: 0.96 }}
+                animate={isMobile ? { opacity: 1, x: 0 } : {
+                  opacity: 1 - review.stackIndex * 0.25,
+                  y: review.stackIndex * 24,
+                  scale: 1 - review.stackIndex * 0.04,
+                  zIndex: 10 - review.stackIndex,
+                  filter: review.stackIndex === 0 ? 'none' : 'blur(1px)',
+                }}
+                exit={isMobile ? { opacity: 0, x: -100 } : { opacity: 0, y: 60, scale: 0.96 }}
+                transition={{ duration: 0.9, type: 'spring', stiffness: 80, damping: 18 }}
+                style={{
+                  background: '#fff',
+                  borderRadius: reviewCardRadius,
+                  boxShadow: '0 4px 32px rgba(13,110,253,0.13)',
+                  padding: isMobile ? '1.2rem 0.7rem' : '2.2rem 2rem 2rem 2rem',
+                  color: '#0b5ed7',
+                  fontSize: '1.15rem',
+                  fontWeight: 500,
+                  border: '1.5px solid #ececec',
+                  width: '100%',
+                  maxWidth: isMobile ? 400 : 520,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  minHeight: isMobile ? 120 : 180,
+                  overflow: 'hidden',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  pointerEvents: 'auto',
+                  position: isMobile ? 'static' : 'absolute',
+                  margin: '0 auto',
+                }}
+              >
+                <p style={{ marginBottom: '2.2rem', color: '#ff8811', fontWeight: 600, lineHeight: 1.6 }}>{review.text}</p>
+                <span style={{ color: '#0b5ed7', fontWeight: 700, fontSize: '1.05rem' }}>{review.author}</span>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
 
 export default About;

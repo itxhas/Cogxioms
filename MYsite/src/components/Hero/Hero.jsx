@@ -151,10 +151,10 @@ const Hero = () => {
           </motion.p>
           <motion.div className="buttons" variants={textVariants}>
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-              <Link to="/contact" className="secondaryBtn">
+              <Link to="/contact" className="gradient-btn">
                 Get in Touch
                 <motion.span
-                  className="btn-arrow"
+                  className="gradient-icon"
                   initial={{ x: 0 }}
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.3 }}

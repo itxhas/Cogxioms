@@ -5,7 +5,7 @@ import './Services.css';
 const services = [
   {
     title: 'Custom Software Development',
-    description: 'Tailored solutions from mobile apps to enterprise platforms designed to meet your business goals. We specialize in scalable, secure, and user-friendly software that grows with your business. Our agile approach ensures rapid delivery and continuous improvement.',
+    description: 'Scalable, secure, and user‑centric software solutions—from mobile apps to enterprise platforms—delivered rapidly through agile, continuous iteration.',
     image: '/Images/customSoftware.png',
     items: [
       {
@@ -32,7 +32,7 @@ const services = [
   },
   {
     title: 'Artificial Intelligence',
-    description: 'Leverage AI to drive smarter decisions and automate processes. Our AI solutions unlock hidden insights in your data and automate repetitive tasks, giving you a competitive edge. We make advanced technology accessible and practical for your business.',
+    description: 'Harness AI to transform data into actionable insights and automate workflows for boosted efficiency and competitive advantage.',
     image: '/Images/ArtificialIntelligence.jpg',
     items: [
       {
@@ -59,7 +59,7 @@ const services = [
   },
   {
     title: 'Predictive Analysis',
-    description: 'A system that uses machine learning to forecast trends and automate insights. Predict future outcomes with confidence and make data-driven decisions that propel your business forward. Our predictive models are tailored to your unique needs.',
+    description: 'Machine learning–powered forecasting and automated insights, delivering tailored predictive models for confident, data‑driven decision‑making.',
     image: '/Images/predictiveAnalysis.png',
     items: [
       {
@@ -86,7 +86,7 @@ const services = [
   },
   {
     title: 'Data Visualization',
-    description: 'Transform your data into actionable insights with beautiful visualizations. We create interactive dashboards and reports that make complex data easy to understand, empowering your team to make informed decisions quickly.',
+    description: 'Interactive dashboards that translate complex data into clear, actionable insights for rapid, informed decision‑making.',
     image: '/Images/Visualization.png',
     items: [
       {
@@ -113,7 +113,7 @@ const services = [
   },
   {
     title: 'Data Scraping & Automation',
-    description: 'Automate data collection and processing workflows. Our robust scraping and automation tools save you time, reduce errors, and ensure you always have the latest information at your fingertips.',
+    description: 'Automated data collection and processing workflows that save time, eliminate errors, and deliver real‑time insights.',
     image: '/Images/scrapping.png',
     items: [
       {
@@ -140,7 +140,7 @@ const services = [
   },
   {
     title: 'API Integration',
-    description: 'Seamlessly connect your systems with third-party services and internal APIs. We ensure secure, reliable, and scalable integrations that streamline your operations and unlock new capabilities for your business.',
+    description: 'Secure, scalable integrations that unify internal APIs and third‑party services to streamline operations and unlock new capabilities.',
     image: '/Images/ApiIntegration.png',
     items: [
       {

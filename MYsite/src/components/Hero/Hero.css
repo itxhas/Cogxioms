@@ -164,8 +164,8 @@
   padding-left: 10%;
 }
 
-.secondaryBtn {
-  background: linear-gradient(90deg, #ff8811, #f59e0b, #ffcc29);
+.gradient-btn {
+  background: linear-gradient(90deg, #ff8811 0%, #f59e0b 40%, #0b5ed7 100%);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -174,19 +174,36 @@
   letter-spacing: 0.02em;
   transition: transform 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
   position: relative;
-  padding: 20px;
+  padding: 20px 36px;
   overflow: hidden;
   cursor: pointer;
   z-index: 1;
-  animation: pulseBtn 2s infinite;
   text-decoration: none;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.gradient-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-5px) scale(1.05) rotate(-1deg);
+  box-shadow: 0 8px 32px rgba(13, 110, 253, 0.5), 0 0 0 8px rgba(13, 110, 253, 0.15);
+}
+.gradient-icon {
+  background: linear-gradient(90deg, #ff8811 0%, #f59e0b 40%, #0b5ed7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
+.secondaryBtn {
+  /* Remove old background, use gradient-btn instead */
+}
 .btn-arrow {
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: transform 0.3s ease;
+  /* Remove old color, use gradient-icon instead */
 }
 
 .secondaryBtn::before {

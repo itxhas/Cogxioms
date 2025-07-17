@@ -5,29 +5,29 @@ import './Team.css';
 const teamMembers = [
   {
     id: 1,
-    name: 'Haseeb Arif',
-    role: 'Full-stack Developer',
-    image: '/Images/Haseeb.png',
-    bio: 'Experienced in React, Node.js, and modern web development practices.',
-    skills: ['React', 'Node.js', 'Python', 'MongoDB']
+    name: 'Hassan Ali',
+    role: 'Experience Architect',
+    image: '/Images/Hassan.jpg',
+    bio: 'Crafts immersive, intuitive UIs.',
+    skills: ['UX Strategy', 'Python', 'Rust', 'React']
   },
   {
     id: 2,
-    name: 'Hassan Ali ',
-    role: 'Software Engineer',
-    image: '/Images/Hassan.jpg',
-    bio: 'Specializes in creating intuitive user interfaces and engaging experiences.',
-    skills: ['UI/UX', 'JavaScript', 'CSS', 'React']
+    name: 'Haseeb Arif',
+    role: 'Full‑Stack Engineer',
+    image: '/Images/Haseeb.png',
+    bio: 'Builds scalable, resilient web platforms.',
+    skills: ['React', 'Node.js', 'Python', 'MongoDB']
   },
   {
     id: 3,
     name: 'Mian Mubasher',
-    role: 'AI Engineer',
+    role: 'AI/ML Engineer',
     image: '/Images/MianMuhammad.jpg',
-    bio: 'Expert in database architecture and server-side development.',
-    skills: ['AI/ML', 'Python', 'TensorFlow', 'SQL']
+    bio: 'Designs advanced machine‑learning solutions.',
+    skills: ['ML', 'Python', 'TensorFlow', 'SQL']
   }
-];
+];  
 
 const Team = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

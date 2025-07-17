@@ -396,31 +396,35 @@
 /* Floating Labels */
 .contact-form label {
   position: absolute;
-  left: 3rem;
-  top: 1rem;
-  color: #64748b;
+  left: 1.2rem;
+  top: 1.1rem;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  color: #334155;
+  background: transparent;
+  padding: 0 0.3rem;
   pointer-events: none;
-  z-index: 3;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  z-index: 2;
 }
-
-.contact-form label.filled,
 .contact-form input:focus + label,
-.contact-form textarea:focus + label {
-  top: 0.5rem;
+.contact-form input:not(:placeholder-shown) + label,
+.contact-form textarea:focus + label,
+.contact-form textarea:not(:placeholder-shown) + label,
+.contact-form label.filled {
+  top: -0.7rem;
   left: 1rem;
-  font-size: 0.8rem;
-  color: #0b2447;
+  font-size: 0.85rem;
+  color: #ff8811;
   background: #fff;
   padding: 0 0.5rem;
   border-radius: 4px;
+  z-index: 3;
 }
 
 /* Submit Button */
 .submit-button {
   position: relative;
-  background: linear-gradient(90deg, #ff8811, #f59e0b, #3b82f6, #8b5cf6, #06b6d4) !important;
+  background: linear-gradient(90deg, #ff8811 0%, #f59e0b 40%, #0b5ed7 100%) !important;
   color: #fff !important;
   border: none;
   border-radius: 12px;
@@ -435,14 +439,13 @@
   overflow: hidden;
   transition: all 0.3s ease;
   margin-top: 1rem;
-  box-shadow: 0 4px 24px rgba(59,130,246,0.12);
+  box-shadow: 0 4px 24px rgba(255,136,17,0.12);
 }
-
 .submit-button:hover {
-  background: linear-gradient(90deg, #ff8811, #f59e0b, #1e293b, #3b82f6) !important;
+  background: linear-gradient(90deg, #ff8811, #f59e0b, #0b5ed7 100%) !important;
   color: #fff !important;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 30px rgba(255,136,17,0.18);
 }
 
 .submit-button:disabled {

@@ -19,14 +19,17 @@
 .team-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1e293b;
+  background: linear-gradient(90deg, #ff8811, #f59e0b 60%, #0b5ed7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   margin-bottom: 1rem;
 }
 
 .team-title span {
-  color: var(--primary);
-  position: relative;
-  display: inline-block;
+  color: inherit;
+  background: none;
 }
 
 .team-title span::after {
@@ -39,8 +42,8 @@
   background: linear-gradient(90deg, rgba(13, 110, 253, 0.4), rgba(13, 110, 253, 0.15));
   z-index: -1;
   border-radius: 15px;
-  animation: underlineWave 1.6s ease-out 0.8s forwards;
-  box-shadow: 0 2px 10px rgba(13, 110, 253, 0.2);
+  /* animation: underlineWave 1.6s ease-out 0.8s forwards; */
+  /* box-shadow: 0 2px 10px rgba(13, 110, 253, 0.2); */
 }
 
 @keyframes underlineWave {
@@ -64,9 +67,11 @@
 
 .team-subtitle {
   font-size: 1.125rem;
-  color: #64748b;
+  color: #0b5ed7;
+  font-weight: 500;
   max-width: 600px;
   margin: 0 auto;
+  background: none;
 }
 
 .team-display {
@@ -79,28 +84,22 @@
 }
 
 .team-member {
-  background: white;
-  border-radius: 16px;
+  background: #fff;
+  border-radius: 22px;
   padding: 2rem;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
   transition: all 0.3s ease;
   max-width: 300px;
   width: 100%;
   position: relative;
   overflow: hidden;
+  border: 3px solid;
+  border-image: linear-gradient(90deg, #ff8811, #f59e0b 60%, #0b5ed7 100%) 1;
 }
 
 .team-member::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), #0b5ed7);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  display: none !important;
 }
 
 .team-member:hover::before {
@@ -132,22 +131,27 @@
 .member-name {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e293b;
+  background: linear-gradient(90deg, #ff8811, #f59e0b 60%, #0b5ed7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   margin-bottom: 0.5rem;
 }
 
 .member-role {
   font-size: 1rem;
-  color: var(--primary);
-  font-weight: 500;
+  color: #ff8811;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .member-bio {
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 0.98rem;
+  color: #0b5ed7;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 /* Skill Tags Styles */
@@ -160,25 +164,28 @@
 }
 
 .skill-tag {
-  background: linear-gradient(135deg, var(--primary), #0b5ed7);
-  color: white;
-  padding: 0.25rem 0.75rem;
+  background: linear-gradient(90deg, #ff8811, #f59e0b 60%, #0b5ed7 100%);
+  color: #fff;
+  padding: 0.35rem 1.1rem;
   border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   transition: all 0.3s ease;
   cursor: default;
+  border: none;
+  box-shadow: 0 2px 8px rgba(255,136,17,0.08);
 }
 
 .skill-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+  filter: brightness(1.08);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.18);
 }
 
 /* Arrow Navigation */
 .team-arrow {
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(90deg, #ff8811, #f59e0b 60%, #0b5ed7 100%);
+  color: #fff;
   border: none;
   width: 40px;
   height: 40px;
@@ -193,10 +200,12 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(255,136,17,0.12);
 }
 
 .team-arrow:hover {
-  background: #0b5ed7;
+  filter: brightness(1.08);
+  background: linear-gradient(90deg, #0b5ed7, #f59e0b 60%, #ff8811 100%);
   transform: translateY(-50%) scale(1.1);
 }
 
