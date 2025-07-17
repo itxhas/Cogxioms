@@ -1,69 +1,423 @@
-import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { FiArrowRight, FiTarget, FiTrendingUp, FiUsers, FiAward, FiZap, FiShield, FiHeart } from 'react-icons/fi';
 import './About.css';
+import emailjs from '@emailjs/browser';
+import { useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const About = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  // If on homepage, show basic info with "Learn More" link
+  if (isHomePage) {
+    return (
+      <section className="about-section">
+        <div className="about-container">
+          <motion.div
+            className="about-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.h2 
+              className="about-title"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Transforming Ideas Into
+              <span className="gradient-text"> Digital Reality</span>
+            </motion.h2>
+            
+            <motion.p
+              className="about-subtitle"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              We are a passionate team of innovators, developers, and designers dedicated to creating cutting-edge solutions that drive business growth and digital transformation.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="about-highlights"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="highlights-grid">
+              <motion.div
+                className="highlight-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="highlight-icon">
+                  <FiTarget />
+                </div>
+                <h3>Mission-Driven</h3>
+                <p>Empowering businesses with innovative technology solutions that create lasting impact.</p>
+              </motion.div>
+
+              <motion.div
+                className="highlight-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="highlight-icon">
+                  <FiTrendingUp />
+                </div>
+                <h3>Growth Focused</h3>
+                <p>Scalable solutions designed to grow with your business and adapt to changing needs.</p>
+              </motion.div>
+
+              <motion.div
+                className="highlight-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="highlight-icon">
+                  <FiUsers />
+                </div>
+                <h3>Client-Centric</h3>
+                <p>Your success is our priority. We work closely with you to deliver exactly what you need.</p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="about-cta"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Link to="/about" className="gradient-btn">
+              <span>Learn More About Us</span>
+              <FiArrowRight className="gradient-icon" />
+              <div className="btn-glow"></div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  // If on about page, show detailed information
   return (
-    <section className="abouts">
-      <div className="about-container"> {/* renamed */}
-        <motion.h2 
-          className="section-title"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          About <span>Us</span>
-        </motion.h2>
-
-        <motion.p
-          className="section-lead"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          We are committed to delivering excellence in software development, data-driven innovation, and intelligent automation.
-        </motion.p>
-
+    <section className="about-detail-section">
+      <div className="about-detail-container">
+        {/* Hero Section */}
         <motion.div
-          className="content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          className="about-hero"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="content-grid">
-            {/* Block 1 */}
-            <div className="content-block">
-              <div className="icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M12 2v4m0 12v4m8-10h-4M4 12h4m11.3-5.3l-2.8 2.8m2.8 8.5l-2.8-2.8M6.7 6.7l2.8 2.8m-2.8 8.5l2.8-2.8" />
-                </svg>
-              </div>
-              <p className="highlighted">
-                Cogxioms builds tailored software solutions from mobile and web apps to enterprise platforms designed to meet your business goals.
-              </p>
-              <p>
-                We focus on intuitive design, scalable architecture, and seamless API integration to deliver reliable, high-performing applications.
-              </p>
-            </div>
+          <motion.h1 
+            className="about-hero-title"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            About <span className="gradient-text">Cogxioms</span>
+          </motion.h1>
+          
+          <motion.p
+            className="about-hero-subtitle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            We are a forward-thinking technology company that specializes in creating innovative digital solutions. Our mission is to transform businesses through cutting-edge technology, data-driven insights, and exceptional user experiences.
+          </motion.p>
+        </motion.div>
 
-            {/* Block 2 */}
-            <div className="content-block">
-              <div className="icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-                </svg>
-              </div>
-              <p className="highlighted">
-                We leverage AI, machine learning, and data technologies to drive smarter decisions, automate processes, and extract insights.
-              </p>
-              <p>
-                Our expertise spans intelligent systems, data visualization, scraping, and workflow automation enabling innovation and efficiency at scale.
-              </p>
-            </div>
+        {/* Values Section */}
+        <motion.div
+          className="values-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="section-title">Our Values</h2>
+          <div className="values-grid">
+            {[
+              {
+                icon: <FiZap />,
+                title: "Innovation",
+                description: "We constantly push boundaries and explore new technologies to deliver cutting-edge solutions."
+              },
+              {
+                icon: <FiShield />,
+                title: "Quality",
+                description: "Every project is crafted with attention to detail and commitment to excellence."
+              },
+              {
+                icon: <FiHeart />,
+                title: "Passion",
+                description: "We're passionate about technology and dedicated to making a positive impact."
+              },
+              {
+                icon: <FiAward />,
+                title: "Excellence",
+                description: "We strive for excellence in everything we do, from code quality to client relationships."
+              }
+            ].map((value, index) => (
+              <motion.div
+                key={value.title}
+                className="value-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <div className="value-icon">{value.icon}</div>
+                <h3>{value.title}</h3>
+                <p>{value.description}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
+
+        {/* Process Section */}
+        <motion.div
+          className="process-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="section-title">Our Process</h2>
+          <div className="process-steps">
+            {[
+              {
+                step: "01",
+                title: "Discovery",
+                description: "We start by understanding your business goals, challenges, and vision for the project."
+              },
+              {
+                step: "02",
+                title: "Strategy",
+                description: "Our team develops a comprehensive strategy and technical roadmap for your solution."
+              },
+              {
+                step: "03",
+                title: "Development",
+                description: "We build your solution using modern technologies and best practices."
+              },
+              {
+                step: "04",
+                title: "Launch",
+                description: "We deploy your solution and provide ongoing support to ensure success."
+              }
+            ].map((process, index) => (
+              <motion.div
+                key={process.step}
+                className="process-step"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="step-number">{process.step}</div>
+                <div className="step-content">
+                  <h3>{process.title}</h3>
+                  <p>{process.description}</p>
+                </div>
+                {index < 3 && <div className="step-connector"></div>}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Team Section */}
+        <motion.div
+          className="team-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="section-title">Our Team</h2>
+          <motion.p
+            className="team-description"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Our team consists of experienced developers, designers, and strategists who are passionate about creating exceptional digital experiences. We combine technical expertise with creative thinking to deliver solutions that exceed expectations.
+          </motion.p>
+          
+          <motion.div
+            className="team-stats"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="stat-item">
+              <div className="stat-number">50+</div>
+              <div className="stat-label">Projects Completed</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">100%</div>
+              <div className="stat-label">Client Satisfaction</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">24/7</div>
+              <div className="stat-label">Support Available</div>
+            </div>
+          </motion.div>
+        </motion.div>
+        {/* Reviews Section */}
+        <AnimatedReviewsSection />
       </div>
     </section>
   );
 };
+
+// --- AnimatedReviewsSection: Scroll-triggered, stacking reviews ---
+function AnimatedReviewsSection() {
+  const reviews = [
+    {
+      text: '"Working with Eaglefur was a game-changer for our business. Their innovative solutions and dedication to quality exceeded our expectations."',
+      author: '- Sarah J., CEO, Visionary Brands'
+    },
+    {
+      text: '"The team at Eaglefur delivered our project on time and with exceptional attention to detail. Their expertise in tech and design is unmatched."',
+      author: '- Michael T., CTO, NextGen Solutions'
+    },
+    {
+      text: '"From start to finish, Eaglefur provided outstanding support and creative ideas. We saw measurable growth thanks to their work."',
+      author: '- Priya S., Founder, DataSpark'
+    },
+    {
+      text: '"Professional, responsive, and truly invested in our success. We felt like partners every step of the way."',
+      author: '- Ahmed R., COO, InnovateX'
+    },
+    {
+      text: '"Eaglefur transformed our vision into reality. We highly recommend them for any digital project!"',
+      author: '- Emily W., Marketing Director, BrightPath'
+    }
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { margin: '-40% 0px -40% 0px', amount: 0.5 });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = windowWidth <= 900;
+  const prev = useRef(current);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // On mobile, always auto-advance every 2 seconds. On desktop, only if in view and every 5 seconds.
+    if (isMobile && !paused) {
+      const interval = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % reviews.length);
+      }, 2000); // 2 seconds per review on mobile
+      return () => clearInterval(interval);
+    } else if (!isMobile && isSectionInView && !paused) {
+      const interval = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % reviews.length);
+      }, 5000); // 5 seconds per review on desktop
+      return () => clearInterval(interval);
+    }
+  }, [isMobile, isSectionInView, reviews.length, paused]);
+
+  // For sliding animation direction
+  useEffect(() => { prev.current = current; }, [current]);
+
+  // Only show up to 3 reviews in the stack for desktop, 1 for mobile
+  const stacked = isMobile
+    ? [{ ...reviews[current], stackIndex: 0, key: `${current}-0` }]
+    : [0, 1, 2].map((offset) => {
+        const idx = (current + offset) % reviews.length;
+        return { ...reviews[idx], stackIndex: offset, key: `${idx}-${offset}` };
+      });
+
+  // Set border-radius for review cards based on screen size
+  const reviewCardRadius = isMobile ? 18 : 32;
+
+  return (
+    <section ref={sectionRef} className="reviews-section about-detail-container" style={{ marginTop: '4rem', borderRadius: reviewCardRadius }}>
+      <div className="reviews-left" style={{ borderRadius: reviewCardRadius }}>
+        <h3 className="reviews-main-heading">What our clients say</h3>
+        <p className="reviews-subheading">Don't just take our word for it – hear it straight from our clients!</p>
+      </div>
+      <div
+        className="reviews-right"
+        onMouseEnter={!isMobile ? () => setPaused(true) : undefined}
+        onMouseLeave={!isMobile ? () => setPaused(false) : undefined}
+        style={{ borderRadius: reviewCardRadius }}
+      >
+        {!isMobile && (
+          <>
+            <button onClick={() => setCurrent((current - 1 + reviews.length) % reviews.length)} className="arrow left">‹</button>
+            <button onClick={() => setCurrent((current + 1) % reviews.length)} className="arrow right">›</button>
+          </>
+        )}
+        <AnimatePresence initial={false} key={isMobile ? current : undefined}>
+          {stacked.map((review) => {
+            return (
+              <motion.div
+                key={isMobile ? current : review.key}
+                className="review-card-stacked"
+                initial={isMobile ? { opacity: 0, x: 100 } : { opacity: 0, y: 60, scale: 0.96 }}
+                animate={isMobile ? { opacity: 1, x: 0 } : {
+                  opacity: 1 - review.stackIndex * 0.25,
+                  y: review.stackIndex * 24,
+                  scale: 1 - review.stackIndex * 0.04,
+                  zIndex: 10 - review.stackIndex,
+                  filter: review.stackIndex === 0 ? 'none' : 'blur(1px)',
+                }}
+                exit={isMobile ? { opacity: 0, x: -100 } : { opacity: 0, y: 60, scale: 0.96 }}
+                transition={{ duration: 0.9, type: 'spring', stiffness: 80, damping: 18 }}
+                style={{
+                  background: '#fff',
+                  borderRadius: reviewCardRadius,
+                  boxShadow: '0 4px 32px rgba(13,110,253,0.13)',
+                  padding: isMobile ? '1.2rem 0.7rem' : '2.2rem 2rem 2rem 2rem',
+                  color: '#0b5ed7',
+                  fontSize: '1.15rem',
+                  fontWeight: 500,
+                  border: '1.5px solid #ececec',
+                  width: '100%',
+                  maxWidth: isMobile ? 400 : 520,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  minHeight: isMobile ? 120 : 180,
+                  overflow: 'hidden',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  pointerEvents: 'auto',
+                  position: isMobile ? 'static' : 'absolute',
+                  margin: '0 auto',
+                }}
+              >
+                <p style={{ marginBottom: '2.2rem', color: '#ff8811', fontWeight: 600, lineHeight: 1.6 }}>{review.text}</p>
+                <span style={{ color: '#0b5ed7', fontWeight: 700, fontSize: '1.05rem' }}>{review.author}</span>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
 
 export default About;
