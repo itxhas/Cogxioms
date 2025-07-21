@@ -182,7 +182,7 @@ const Contact = () => {
                 Start Your Project
               </motion.h3>
 
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 {isSubmitted ? (
                   <motion.div
                     className="success-message"

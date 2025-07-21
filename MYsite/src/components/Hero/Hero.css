@@ -82,7 +82,7 @@
 }
 
 .content h1 span {
-  color: #ff8811;
+  color: #5f0f40;
   position: relative;
   display: inline-block;
   font-size: 4rem;
@@ -120,7 +120,7 @@
 
 /* Typing Animation Styles */
 .typing-text {
-  color: #ff8811;
+  color: #5f0f40;
   position: relative;
   display: inline-block;
   font-size: 4rem;
@@ -131,7 +131,7 @@
 
 .cursor {
   animation: blink 1s infinite;
-  color: #ff8811;
+  color: #5f0f40;
   font-weight: bold;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .gradient-btn {
-  background: linear-gradient(90deg, #ff8811 0%, #f59e0b 40%, #0b5ed7 100%);
+  background: linear-gradient(90deg, #5f0f40 0%, #5f0f40 40%, #0b5ed7 100%);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -191,7 +191,7 @@
   box-shadow: 0 8px 32px rgba(13, 110, 253, 0.5), 0 0 0 8px rgba(13, 110, 253, 0.15);
 }
 .gradient-icon {
-  background: linear-gradient(90deg, #ff8811 0%, #f59e0b 40%, #0b5ed7 100%);
+  background: linear-gradient(90deg, #5f0f40 0%, #5f0f40 40%, #0b5ed7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -220,7 +220,7 @@
 }
 
 .secondaryBtn:hover {
-  background: #ff8811;
+  background: #5f0f40;
   color: #fff;
   transform: translateY(-5px) scale(1.05) rotate(-1deg);
   box-shadow: 0 8px 32px rgba(13, 110, 253, 0.5), 0 0 0 8px rgba(13, 110, 253, 0.15);

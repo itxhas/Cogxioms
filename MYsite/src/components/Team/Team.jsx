@@ -173,7 +173,7 @@ const Team = () => {
             </motion.button>
           )}
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {getVisibleMembers().map((member, idx) => (
               <motion.div 
                 key={`${member.id}-${currentIndex}`}
