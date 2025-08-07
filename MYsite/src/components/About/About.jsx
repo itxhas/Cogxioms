@@ -409,7 +409,7 @@ function AnimatedReviewsSection() {
                   margin: '0 auto',
                 }}
               >
-                <p style={{ marginBottom: '2.2rem', color: '#ff8811', fontWeight: 600, lineHeight: 1.6 }}>{review.text}</p>
+                <p style={{ marginBottom: '2.2rem', color: '#5f0f40', fontWeight: 600, lineHeight: 1.6 }}>{review.text}</p>
                 <span style={{ color: '#0b5ed7', fontWeight: 700, fontSize: '1.05rem' }}>{review.author}</span>
               </motion.div>
             );

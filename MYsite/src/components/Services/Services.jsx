@@ -268,10 +268,10 @@ const Services = () => {
                 whileHover={{ scale: 1.03, boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                style={expanded === idx ? { background: '#ffe6c7', color: '#ff8811', borderColor: '#ff8811', position: 'sticky', top: 0, zIndex: 10 } : {}}
+                style={expanded === idx ? { background: '#ffe6c7', color: '#0f172a', borderColor: '#0f172a', position: 'sticky', top: 0, zIndex: 10 } : {}}
                 onMouseEnter={e => {
                   if (expanded !== idx) {
-                    e.currentTarget.querySelector('.plus-icon').style.background = '#ff8811';
+                    e.currentTarget.querySelector('.plus-icon').style.background = '#5f0f40';
                     e.currentTarget.querySelector('.plus-icon').style.color = '#fff';
                   }
                 }}
@@ -288,7 +288,7 @@ const Services = () => {
                   animate={{ rotate: expanded === idx ? 0 : 0 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   style={{
-                    background: expanded === idx ? '#ff8811' : '',
+                    background: expanded === idx ? '#0f172a' : '',
                     color: expanded === idx ? '#fff' : '#222',
                     borderRadius: '6px',
                     padding: '0 0.3em',
@@ -300,7 +300,7 @@ const Services = () => {
                     fontWeight: 800,
                     fontSize: '1.5em',
                     boxSizing: 'border-box',
-                    border: expanded === idx ? '2px solid #ff8811' : '2px solid #ececec',
+                    border: expanded === idx ? '2px solid #0f172a' : '2px solid #ececec',
                     transition: 'background 0.18s, color 0.18s, border 0.18s',
                   }}
                 >

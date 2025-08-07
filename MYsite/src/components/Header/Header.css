@@ -130,6 +130,7 @@
 
 .navItem {
   position: relative;
+  margin-right: 1rem;
 }
 
 .navLink {
@@ -145,6 +146,7 @@
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  margin-right: 1rem;
 }
 
 .navIconWrapper {
@@ -181,7 +183,7 @@
 }
 
 .navLink:hover {
-  color: #5f0f40;
+  color:white;
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -197,7 +199,7 @@
 }
 
 .navLink.active {
-  color: #5f0f40;
+  color:whitesmoke;
   background: rgba(95, 15, 64, 0.08);
   border: 1px solid rgba(95, 15, 64, 0.18);
 }

@@ -244,6 +244,7 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
+  
   text-align: center;
   margin-bottom: 3rem;
   position: relative;
@@ -576,7 +577,7 @@
 .review-card, .review-card-stacked, .stat-item, .highlight-card, .value-card {
   border-radius: 32px !important;
   border: 2px solid;
-  border-image: linear-gradient(90deg, #5f0f40, #5f0f40, #0b5ed7) 1;
+  /* border-image: linear-gradient(90deg, #5f0f40, #5f0f40, #0b5ed7) 1; */
   background: #fff;
 }
 
@@ -732,9 +733,9 @@
 }
 
 .team-section {
-  border-radius: 32px;
+  /* border-radius: 32px;
   border: 4px solid;
-  border-image: linear-gradient(90deg, #5f0f40, #5f0f40, #0b5ed7) 1;
+  border-image: linear-gradient(90deg, #5f0f40, #5f0f40, #0b5ed7) 1; */
 }
 
 .reviews-section {
@@ -744,7 +745,7 @@
   gap: 2rem;
   border-radius: 32px;
   border: 4px solid;
-  border-image: linear-gradient(90deg, #5f0f40, #5f0f40, #0b5ed7) 1;
+  /* border-image: linear-gradient(90deg, #5f0f40, #5f0f40, #0b5ed7) 1; */
   background: #fff !important;
   position: relative;
   flex-wrap: wrap;

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMail, FiPhone, FiGlobe, FiMapPin, FiSend, FiCheck, FiUser, FiMessageSquare } from 'react-icons/fi';
 import { FaLinkedin, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -15,6 +16,11 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeField, setActiveField] = useState('');
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("oPnz52lsad-Y0j9o-");
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -27,17 +33,31 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
+    try {
+      // Send email using EmailJS
+      const response = await emailjs.sendForm(
+        "service_v52b9oc",
+        "template_1wckpao",
+        e.target
+      );
+      
+      console.log("SUCCESS!", response.status, response.text);
+      setIsSubmitted(true);
+      
+      // Reset form
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+      
+      // Reset success message after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.log("FAILED...", error);
+      alert("Failed to send the message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
